@@ -14,7 +14,8 @@ public class Receive {
 
     //通过 @RabbitListener 注解定义对队列的监听
     @RabbitListener(queues = QUEUE_NAME)
-    public void receiveMessage(String message) {
+    public void receiveMessage(String message) throws InterruptedException {
+        Thread.sleep(2000);
         System.out.println("Received <" + message + ">");
     }
 }

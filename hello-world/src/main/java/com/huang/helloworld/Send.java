@@ -20,8 +20,10 @@ public class Send {
     }
 
     public void send() {
-        String context = "hello world";
-        System.out.println("Send : " + context);
-        this.rabbitTemplate.convertAndSend(QUEUE_NAME, context);
+        for (int i = 0; i < 5; i++) {
+            String context = "hello world " + i;
+            System.out.println("Send : " + context);
+            this.rabbitTemplate.convertAndSend(QUEUE_NAME, context);
+        }
     }
 }
