@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 public class Send {
 
     private static final String QUEUE_NAME = "queue_name1";
+    private static final String QUEUE_NAME2 = "queue_name2";
     private final AmqpTemplate rabbitTemplate;
 
     @Autowired
@@ -25,5 +26,12 @@ public class Send {
             System.out.println("Send : " + context);
             this.rabbitTemplate.convertAndSend(QUEUE_NAME, context);
         }
+    }
+
+    public void sendObject() {
+        User user = new User();
+        user.setId(100L);
+        user.setName("huang");
+        this.rabbitTemplate.convertAndSend(QUEUE_NAME2, user);
     }
 }

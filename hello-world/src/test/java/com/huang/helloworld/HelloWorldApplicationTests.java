@@ -14,9 +14,13 @@ public class HelloWorldApplicationTests {
     private Send send;
 
     @Test
-    public void hello() {
+    public void send() {
         send.send();
     }
 
+    @Test
+    public void sendObject() {
+        send.sendObject();
+    }
 }
 

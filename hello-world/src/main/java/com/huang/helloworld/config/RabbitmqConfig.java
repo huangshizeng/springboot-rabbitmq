@@ -14,9 +14,15 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitmqConfig {
 
     private static final String QUEUE_NAME = "queue_name1";
+    private static final String QUEUE_NAME2 = "queue_name2";
 
     @Bean
     public Queue Queue() {
         return new Queue(QUEUE_NAME);
+    }
+
+    @Bean
+    public Queue Queue2() {
+        return new Queue(QUEUE_NAME2);
     }
 }

@@ -11,11 +11,18 @@ import org.springframework.stereotype.Component;
 public class Receive {
 
     private static final String QUEUE_NAME = "queue_name1";
+    private static final String QUEUE_NAME2 = "queue_name2";
 
     //通过 @RabbitListener 注解定义对队列的监听
     @RabbitListener(queues = QUEUE_NAME)
     public void receiveMessage(String message) throws InterruptedException {
         Thread.sleep(2000);
         System.out.println("Received <" + message + ">");
+    }
+
+    @RabbitListener(queues = QUEUE_NAME2)
+    public void receiveMessage(User user) throws InterruptedException {
+        Thread.sleep(2000);
+        System.out.println("Received <" + user + ">");
     }
 }
