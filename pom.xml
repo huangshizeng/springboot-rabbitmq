@@ -47,6 +47,7 @@
         <module>pub-sub</module>
         <module>routing</module>
         <module>topic</module>
+        <module>dead-letter-exchange</module>
     </modules>
 
 </project>
