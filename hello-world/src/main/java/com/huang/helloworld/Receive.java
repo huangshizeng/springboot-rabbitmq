@@ -1,7 +1,11 @@
 package com.huang.helloworld;
 
+import com.rabbitmq.client.Channel;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 /**
  * @author 黄世增
@@ -15,9 +19,11 @@ public class Receive {
 
     //通过 @RabbitListener 注解定义对队列的监听
     @RabbitListener(queues = QUEUE_NAME)
-    public void receiveMessage(String message) throws InterruptedException {
+    public void receiveMessage(Message message, Channel channel) throws InterruptedException, IOException {
         Thread.sleep(2000);
-        System.out.println("Received <" + message + ">");
+        System.out.println("Received <" + new String(message.getBody()) + ">");
+        //手动消息确认
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
     @RabbitListener(queues = QUEUE_NAME2)
