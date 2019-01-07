@@ -48,6 +48,7 @@
         <module>routing</module>
         <module>topic</module>
         <module>dead-letter-exchange</module>
+        <module>message-confirm</module>
     </modules>
 
 </project>
