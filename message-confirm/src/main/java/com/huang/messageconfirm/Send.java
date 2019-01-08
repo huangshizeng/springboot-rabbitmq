@@ -25,7 +25,7 @@ public class Send {
         for (int i = 0; i < 10; i++) {
             String context = "hello world " + i;
             System.out.println("Send : " + context);
-            this.rabbitTemplate.convertAndSend(EXCHANGE_NAME, "", context);
+            this.rabbitTemplate.convertAndSend(EXCHANGE_NAME, "huangshizeng", context);
         }
     }
 

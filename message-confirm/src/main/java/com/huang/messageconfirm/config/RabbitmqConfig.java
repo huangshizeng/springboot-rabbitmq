@@ -2,7 +2,7 @@ package com.huang.messageconfirm.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,12 +23,12 @@ public class RabbitmqConfig {
     }
 
     @Bean
-    public FanoutExchange exchange() {
-        return new FanoutExchange(EXCHANGE_NAME);
+    public DirectExchange exchange() {
+        return new DirectExchange(EXCHANGE_NAME);
     }
 
     @Bean
-    public Binding banding(Queue queue1, FanoutExchange exchange) {
-        return BindingBuilder.bind(queue1).to(exchange);
+    public Binding banding(Queue queue1, DirectExchange exchange) {
+        return BindingBuilder.bind(queue1).to(exchange).with("huang");
     }
 }
